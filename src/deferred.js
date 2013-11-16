@@ -13,6 +13,9 @@ var Deferred = (function(){
 
         var self = this;
         this.promise = {
+            then:function(success,error,update){
+                return self.promise;
+            }
         };
     };
 
