@@ -31,5 +31,7 @@ describe("Promise spec", function(){
             resolvedValue = value;
         });
         expect(resolvedValue).toBeUndefined();
+        def.good(10);
+        expect(resolvedValue).toBe(10);
     })
 })
