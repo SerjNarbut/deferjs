@@ -22,4 +22,9 @@ describe("Deferred tests",function(){
         def2.good(12);
         expect(def1.goodVal).not.toBe(def2.goodVal);
     })
+
+    it("should have update method",function(){
+        var def = Deferred.defer();
+        expect(def.update).toBeDefined();
+    })
 })
