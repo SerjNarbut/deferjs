@@ -10,6 +10,10 @@ var Deferred = (function(){
         this.updateVal = null;
         this.sucFunct = [];
         this.errFunct = [];
+
+        var self = this;
+        this.promise = {
+        };
     };
 
     deferClass.prototype.good = function(value){
