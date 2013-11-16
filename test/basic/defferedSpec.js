@@ -13,4 +13,13 @@ describe("Deferred tests",function(){
         deferred.bad(10);
         expect(deferred.badVal).toEqual(10);
     })
+
+    it("should be different value", function(){
+        var def1 = Deferred.defer();
+        var def2 = Deferred.defer();
+
+        def1.good(11);
+        def2.good(12);
+        expect(def1.goodVal).not.toBe(def2.goodVal);
+    })
 })
