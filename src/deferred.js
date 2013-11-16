@@ -10,10 +10,27 @@ var Deferred = (function(){
         this.updateVal = null;
         this.sucFunct = [];
         this.errFunct = [];
+        this.updFunct = [];
 
         var self = this;
         this.promise = {
-            then:function(success,error,update){
+            then:function(){
+
+                if(arguments.length > 0){
+                    if(arguments[0] !== undefined && typeof arguments[0] === 'function'){
+                        self.sucFunct.push(arguments[0]);
+                    }
+                    if(arguments.length > 1){
+                        if(arguments[1] !== undefined && typeof arguments[1] === 'function'){
+                            self.errFunct.push(arguments[1]);
+                        }
+                    }
+                    if(arguments.length == 3){
+                        if(arguments[2] !== undefined && typeof arguments[2] === 'function'){
+                            self.updFunct.push(arguments[2]);
+                        }
+                    }
+                }
                 return self.promise;
             }
         };

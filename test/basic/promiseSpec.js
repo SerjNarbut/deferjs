@@ -7,7 +7,29 @@ describe("Promise spec", function(){
     it("should return then promise", function(){
         var def = Deferred.defer();
         var promise = def.promise;
-        var promise2 = promise.then(null,null,null);
+        var promise2 = promise.then();
         expect(promise).toEqual(promise2);
+    })
+
+    it("should one success and two error function", function(){
+        var def = Deferred.defer();
+        var promise = def.promise;
+
+        promise.then(function(){   },function(){  }).then(null,function(){});
+
+        expect(def.sucFunct.length).toBe(1);
+        expect(def.errFunct.length).toBe(2);
+        expect(def.updFunct.length).toBe(0);
+    })
+
+    it("should simulate promis",function(){
+        var def = Deferred.defer();
+        var resolvedValue;
+
+        var promise = def.promise;
+        promise.then(function(value){
+            resolvedValue = value;
+        });
+        expect(resolvedValue).toBeUndefined();
     })
 })
