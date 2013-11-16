@@ -2,7 +2,7 @@
  * Created by SerjNarbut on 17.11.13.
  */
 
-var Deffered = (function(){
+var Deferred = (function(){
 
     function deferClass(){
         this.goodVal = null;
