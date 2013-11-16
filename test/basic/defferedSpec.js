@@ -27,4 +27,9 @@ describe("Deferred tests",function(){
         var def = Deferred.defer();
         expect(def.update).toBeDefined();
     })
+
+    it("should have promise",function(){
+        var def = Deferred.defer();
+        expect(def.promise).toBeDefined();
+    })
 })
