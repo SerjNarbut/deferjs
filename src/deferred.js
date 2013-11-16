@@ -11,6 +11,10 @@ var Deferred = (function(){
 
     deferClass.prototype.good = function(value){
         this.goodVal = value;
+    };
+
+    deferClass.prototype.bad = function(value){
+        this.badVal = value;
     }
     return{
         defer:function(){
