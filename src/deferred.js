@@ -4,6 +4,12 @@
 
 var Deferred = (function(){
 
+
+    var isPromise = function(value){
+        return value && typeof  value === 'function';
+    }
+    
+
     function deferClass(){
         this.goodVal = null;
         this.badVal = null;
@@ -17,16 +23,16 @@ var Deferred = (function(){
             then:function(){
 
                 if(arguments.length > 0){
-                    if(arguments[0] !== undefined && typeof arguments[0] === 'function'){
+                    if(isPromise(arguments[0])){
                         self.sucFunct.push(arguments[0]);
                     }
                     if(arguments.length > 1){
-                        if(arguments[1] !== undefined && typeof arguments[1] === 'function'){
+                        if(isPromise(arguments[1])){
                             self.errFunct.push(arguments[1]);
                         }
                     }
                     if(arguments.length == 3){
-                        if(arguments[2] !== undefined && typeof arguments[2] === 'function'){
+                        if(isPromise(arguments[2])){
                             self.updFunct.push(arguments[2]);
                         }
                     }
