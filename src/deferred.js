@@ -38,14 +38,23 @@ var Deferred = (function(){
 
     deferClass.prototype.good = function(value){
         this.goodVal = value;
+        this.sucFunct.map(function(fnct){
+            fnct(value);
+        });
     };
 
     deferClass.prototype.bad = function(value){
         this.badVal = value;
+        this.errFunct.map(function(fnct){
+            fnct(value);
+        });
     };
 
     deferClass.prototype.update = function(value){
         this.updateVal = value;
+        this.updFunct.map(function(fnct){
+            fnct(value);
+        });
     };
 
     return{
