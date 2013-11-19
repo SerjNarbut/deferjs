@@ -15,6 +15,24 @@ var Deferred = (function(){
         this.sucFunct = [];
         this.errFunct = [];
 
+        this.good = function(value){
+            this.goodVal = value;
+            this.sucFunct.map(function(fnct){
+                fnct(value);
+            });
+
+            this.sucFunct = undefined;
+        }
+
+        this.bad = function(value){
+            this.badVal = value;
+            this.errFunct.map(function(fnct){
+                fnct(value);
+            });
+
+            this.errFunct = undefined;
+        }
+
         var self = this;
         this.promise = {
             then:function(){
@@ -36,24 +54,6 @@ var Deferred = (function(){
                 return self.promise;
             }
         };
-    };
-
-    deferClass.prototype.good = function(value){
-        this.goodVal = value;
-        this.sucFunct.map(function(fnct){
-            fnct(value);
-        });
-
-        this.sucFunct = undefined;
-    };
-
-    deferClass.prototype.bad = function(value){
-        this.badVal = value;
-        this.errFunct.map(function(fnct){
-            fnct(value);
-        });
-
-        this.errFunct = undefined;
     };
 
     return{
