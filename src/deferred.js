@@ -10,13 +10,12 @@ var Deferred = (function(){
     }
 
     function deferClass(){
-        this.goodVal = null;
-        this.badVal = null;
+        this.value = null;
         this.sucFunct = [];
         this.errFunct = [];
 
         this.good = function(value){
-            this.goodVal = value;
+            this.value = value;
             this.sucFunct.map(function(fnct){
                 fnct(value);
             });
@@ -25,7 +24,7 @@ var Deferred = (function(){
         }
 
         this.bad = function(value){
-            this.badVal = value;
+            this.value = value;
             this.errFunct.map(function(fnct){
                 fnct(value);
             });
@@ -42,7 +41,7 @@ var Deferred = (function(){
                         if(self.sucFunct){
                             self.sucFunct.push(arguments[0]);
                         }else{
-                            arguments[0](self.goodVal);
+                            arguments[0](self.value);
                         }
                     }
                     if(arguments.length > 1){

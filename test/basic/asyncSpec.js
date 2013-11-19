@@ -52,36 +52,4 @@ describe("Async promise spec",function(){
             expect(resolvedValue).toBe(25);
         })
     })
-
-
-    it("should be work async all method", function(){
-        var deferred = Deferred.defer();
-        var promise = deferred.promise;
-        var resolvedValueGood;
-        var resolvedValueBad;
-        var resolvedValueUpdate;
-        promise.then(function(value){
-            resolvedValueGood = value;
-        }, function(value){
-            resolvedValueBad = value;
-        });
-
-        runs(function(){
-            flag = false;
-            setTimeout(function(){
-                deferred.good(25);
-                deferred.bad(10);
-                flag = true;
-            },1000);
-        })
-
-        waitsFor(function(){
-            return flag;
-        },"Async call stopped",1000);
-
-        runs(function(){
-            expect(resolvedValueGood).toBe(25);
-            expect(resolvedValueBad).toBe(10);
-        })
-    })
 })

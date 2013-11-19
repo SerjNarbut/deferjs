@@ -5,13 +5,13 @@ describe("Deferred tests",function(){
     it("should be getting good value",function(){
         var deferred = Deferred.defer();
         deferred.good(10);
-        expect(deferred.goodVal).toEqual(10);
+        expect(deferred.value).toEqual(10);
     })
 
     it("should be getting bad value",function(){
         var deferred = Deferred.defer();
         deferred.bad(10);
-        expect(deferred.badVal).toEqual(10);
+        expect(deferred.value).toEqual(10);
     })
 
     it("should be different value", function(){
@@ -20,7 +20,7 @@ describe("Deferred tests",function(){
 
         def1.good(11);
         def2.good(12);
-        expect(def1.goodVal).not.toBe(def2.goodVal);
+        expect(def1.value).not.toBe(def2.value);
     })
 
     it("should have promise",function(){
