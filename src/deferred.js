@@ -15,20 +15,23 @@ var Deferred = (function(){
         this.errFunct = [];
 
         this.good = function(value){
-            this.value = value;
-            this.sucFunct.map(function(fnct){
-                fnct(value);
-            });
+            if(this.sucFunct){
+                this.value = value;
+                this.sucFunct.map(function(fnct){
+                    fnct(value);
+                });
 
-            this.sucFunct = undefined;
+                this.sucFunct = undefined;
+            }
         }
 
         this.bad = function(value){
-            this.value = value;
-            this.errFunct.map(function(fnct){
-                fnct(value);
-            });
-
+            if(this.errFunct){
+                this.value = value;
+                this.errFunct.map(function(fnct){
+                    fnct(value);
+                });
+            }
             this.errFunct = undefined;
         }
 
