@@ -34,20 +34,18 @@ var Deferred = (function(){
 
         var self = this;
         this.promise = {
-            then:function(){
+            then:function(callback, errBack){
 
-                if(arguments.length > 0){
-                    if(isPromise(arguments[0])){
-                        if(self.sucFunct){
-                            self.sucFunct.push(arguments[0]);
-                        }else{
-                            arguments[0](self.value);
-                        }
+                if(isPromise(callback)){
+                    if(self.sucFunct){
+                        self.sucFunct.push(callback);
+                    }else{
+                        callback(self.value);
                     }
-                    if(arguments.length > 1){
-                        if(isPromise(arguments[1])){
-                            self.errFunct.push(arguments[1]);
-                        }
+                }
+                if(self.errFunct){
+                    if(isPromise(errBack)){
+                        self.errFunct.push(errBack);
                     }
                 }
                 return self.promise;

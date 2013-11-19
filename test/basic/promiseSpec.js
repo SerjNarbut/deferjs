@@ -21,6 +21,20 @@ describe("Promise spec", function(){
         expect(def.errFunct.length).toBe(2);
     })
 
+    it("should run callback only once",function(){
+        var def = Deferred.defer();
+        var promise = def.promise;
+        var resolve;
+        promise.then(function(value){
+            resolve = value;
+        })
+
+        def.good(10);
+        expect(resolve).toBe(10);
+        def.good(50);
+        expect(resolve).toBe(10);
+    })
+
     it("should simulate promis",function(){
         var def = Deferred.defer();
         var resolvedValue;
