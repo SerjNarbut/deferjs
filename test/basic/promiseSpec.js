@@ -19,7 +19,6 @@ describe("Promise spec", function(){
 
         expect(def.sucFunct.length).toBe(1);
         expect(def.errFunct.length).toBe(2);
-        expect(def.updFunct.length).toBe(0);
     })
 
     it("should simulate promis",function(){
